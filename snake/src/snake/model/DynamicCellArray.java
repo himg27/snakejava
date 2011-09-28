@@ -1,5 +1,7 @@
 package snake.model;
 
+import java.util.Arrays;
+
 class DynamicCellArray {
 	private SnakeCell[] cells;
 	
@@ -10,7 +12,15 @@ class DynamicCellArray {
 	}
 	
 	public SnakeCellIterator iterator() {
-		return new SnakeCellIteratorImpl(cells); //TODO optimize
+		return new SnakeCellIteratorImpl(cells);
+	}
+	
+	public void addEmpty() {
+		cells = Arrays.copyOf(cells, cells.length+1);
+	}
+	
+	public int getSize() {
+		return cells.length;
 	}
 	
 }
