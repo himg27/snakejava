@@ -2,7 +2,7 @@ package snake.model;
 
 import java.util.Arrays;
 
-class DynamicCellArray {
+public class DynamicCellArray {
 	private SnakeCell[] cells;
 	
 	public DynamicCellArray(int initSize) {
