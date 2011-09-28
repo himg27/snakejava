@@ -1,5 +1,6 @@
 package snake.core;
 
+import snake.model.BoardPosition;
 import snake.model.Snake;
 import snake.model.SnakeCell;
 import snake.model.SnakeCellIterator;
@@ -15,7 +16,6 @@ class SnakeMoveListenerImpl implements SnakeMoveListener {
 
 	@Override
 	public void move(SnakeDirection direction) {
-		// TODO update Snake Position
 		SnakeCellIterator it = snakeObj.iterator();
 		SnakeCell head = it.next();
 		int oldX = head.getX();
@@ -38,9 +38,11 @@ class SnakeMoveListenerImpl implements SnakeMoveListener {
 			break;
 		}
 		
-		head.MoveTo(newX, newY);
+
+		BoardPosition prev = head.MoveTo(newX, newY);
 		while (it.hasNext()) {
-			
+			SnakeCell cur = it.next();
+			prev = cur.MoveTo(prev);
 		}
 	}
 
