@@ -9,6 +9,11 @@ public class BoardPosition {
 		y = 0;
 	}
 	
+	public BoardPosition(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
 	public BoardPosition(BoardPosition copy) {
 		x = copy.getX();
 		y = copy.getY();

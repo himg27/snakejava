@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import snake.model.Board;
-import snake.model.Snake;
 
 public class MainWindow extends JFrame {
 	/**
@@ -17,11 +16,9 @@ public class MainWindow extends JFrame {
 	private final static int SIZE_COEF = 50;
 	
 	private Board board;
-	private Snake snakeObj;
 	
-	public MainWindow(Board board, Snake snake) {
+	public MainWindow(Board board) {
 		this.board = board;
-		snakeObj = snake;
 		
 		setTitle("Snake");
 	    setSize(board.getColumns()*SIZE_COEF, board.getRows()*SIZE_COEF);
@@ -41,10 +38,6 @@ public class MainWindow extends JFrame {
 			}
 		}
 		
-		addKeyListener(new KeyboardListener(snakeObj));
-	}
-	
-	public void newGame(Snake snake) {
-		snakeObj = snake;
+		addKeyListener(new KeyboardListener(board.getSnake()));
 	}
 }
