@@ -53,6 +53,8 @@ public class MainWindow extends JFrame {
         JMenu fileMenu = new JMenu("File");
         menuBar.add(fileMenu);
         JMenuItem newAction = new JMenuItem("New game");
+        newAction.setAccelerator(KeyStroke.getKeyStroke("F2"));
+        
         JMenuItem exitAction = new JMenuItem("Exit");
         exitAction.setAccelerator(KeyStroke.getKeyStroke("alt X"));
         
