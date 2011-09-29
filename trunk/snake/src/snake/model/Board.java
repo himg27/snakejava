@@ -1,5 +1,7 @@
 package snake.model;
 
+
+
 public class Board {
 	private int cols;
 	private int rows;
