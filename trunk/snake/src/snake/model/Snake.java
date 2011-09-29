@@ -4,6 +4,7 @@ import snake.model.collections.DynamicCellArray;
 import snake.model.collections.SnakeIterator;
 import snake.model.exceptions.EatItselfException;
 import snake.model.exceptions.MoveBackException;
+import snake.model.exceptions.OutOfBoardBoundsException;
 
 public class Snake {
 	private DynamicCellArray cells;
@@ -18,12 +19,12 @@ public class Snake {
 		cells.add();
 	}
 	
-	public void move(SnakeDirection direction) throws EatItselfException, MoveBackException {
+	public void move(SnakeDirection direction) throws EatItselfException, MoveBackException, OutOfBoardBoundsException {
 		if (moveListener != null)
 			moveListener.move(direction);
 	}
 	
-	public void addSnakeMoveListener(SnakeMoveListener l) {
+	public void setSnakeMoveListener(SnakeMoveListener l) {
 		moveListener = l;
 	}
 	

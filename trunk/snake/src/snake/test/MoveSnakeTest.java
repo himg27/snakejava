@@ -10,6 +10,7 @@ import snake.model.SnakeDirection;
 import snake.model.collections.SnakeIterator;
 import snake.model.exceptions.EatItselfException;
 import snake.model.exceptions.MoveBackException;
+import snake.model.exceptions.OutOfBoardBoundsException;
 
 import junit.framework.TestCase;
 
@@ -19,6 +20,8 @@ import junit.framework.TestCase;
  * */
 public class MoveSnakeTest extends TestCase {
 	private Snake snake;
+	private BoardPosition bounds;
+	
 	private static int SNAKE_LENGTH = 10;
 	
 	private BoardPosition oldHeadPos;
@@ -32,6 +35,9 @@ public class MoveSnakeTest extends TestCase {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		} catch (MoveBackException e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		} catch (OutOfBoardBoundsException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		}
@@ -61,6 +67,9 @@ public class MoveSnakeTest extends TestCase {
 		} catch (MoveBackException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
+		} catch (OutOfBoardBoundsException e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
 		}
 		
 		SnakeIterator it = snake.iterator();
@@ -88,6 +97,9 @@ public class MoveSnakeTest extends TestCase {
 			fail(e.getLocalizedMessage());
 		} catch (MoveBackException e) {
 			eMoveBack = e;
+		} catch (OutOfBoardBoundsException e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
 		}
 		
 		assertNotNull(eMoveBack);
@@ -101,6 +113,9 @@ public class MoveSnakeTest extends TestCase {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		} catch (MoveBackException e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		} catch (OutOfBoardBoundsException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		}
@@ -119,10 +134,59 @@ public class MoveSnakeTest extends TestCase {
 		assertEquals(tail.getX(), oldTailPos.getX()+1);
 		assertEquals(tail.getY(), oldTailPos.getY());
 	}
+	
+	@Test
+	public void testMoveOutOfBoundsVert() {
+		OutOfBoardBoundsException eOOB = null;
+		SnakeIterator it = snake.iterator();
+		SnakeCell head = it.next();
+		int y = head.getY();
+		try {
+			while (y <= bounds.getY()) {
+				snake.move(SnakeDirection.UP);
+				++y;
+			}
+		} catch (EatItselfException e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		} catch (MoveBackException e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		} catch (OutOfBoardBoundsException e) {
+			eOOB = e;
+		}
+		
+		assertNotNull(eOOB);
+	}
+	
+	@Test
+	public void testMoveOutOfBoundsHor() {
+		OutOfBoardBoundsException eOOB = null;
+		SnakeIterator it = snake.iterator();
+		SnakeCell head = it.next();
+		int x = head.getX();
+		try {
+			while (x <= bounds.getX()) {
+				snake.move(SnakeDirection.RIGHT);
+				++x;
+			}
+		} catch (EatItselfException e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		} catch (MoveBackException e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		} catch (OutOfBoardBoundsException e) {
+			eOOB = e;
+		}
+		
+		assertNotNull(eOOB);
+	}
 
 	@Override
 	protected void setUp() throws Exception {
-		snake = SnakeFactory.CreateSnake(SNAKE_LENGTH, true);
+		bounds = new BoardPosition(20, 20);
+		snake = SnakeFactory.CreateSnake(SNAKE_LENGTH, true, bounds);
 		
 		int i = snake.getLength();
 		SnakeIterator it = snake.iterator();
