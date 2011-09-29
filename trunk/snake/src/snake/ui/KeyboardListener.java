@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 import snake.model.Snake;
 import snake.model.SnakeDirection;
 import snake.model.exceptions.EatItselfException;
-import snake.model.exceptions.MoveBackException;
+import snake.model.exceptions.InvalidMoveDirectionException;
 import snake.model.exceptions.OutOfBoardBoundsException;
 
 class KeyboardListener implements KeyListener {
@@ -35,7 +35,7 @@ class KeyboardListener implements KeyListener {
 			}
 		} catch (EatItselfException eat) {
 			// TODO
-		} catch (MoveBackException e) {
+		} catch (InvalidMoveDirectionException e) {
 			// TODO		
 		} catch (OutOfBoardBoundsException e) {
 			// TODO			

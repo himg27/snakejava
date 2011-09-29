@@ -1,7 +1,7 @@
 package snake.model;
 
 import snake.model.collections.SnakeIterator;
-import snake.model.exceptions.MoveBackException;
+import snake.model.exceptions.InvalidMoveDirectionException;
 import snake.model.exceptions.OutOfBoardBoundsException;
 
 
@@ -15,7 +15,7 @@ public class SnakeMoveListenerImpl implements SnakeMoveListener {
 	}
 
 	@Override
-	public void move(SnakeDirection direction) throws MoveBackException, OutOfBoardBoundsException {
+	public void move(SnakeDirection direction) throws InvalidMoveDirectionException, OutOfBoardBoundsException {
 		SnakeIterator it = snakeObj.iterator();
 		SnakeCell head = it.next();
 		int oldX = head.getX();
@@ -38,8 +38,8 @@ public class SnakeMoveListenerImpl implements SnakeMoveListener {
 			break;
 		}
 
-		if (!snakeObj.canMove(direction))
-			throw new MoveBackException();
+		if (!snakeObj.isValidDirection(direction))
+			throw new InvalidMoveDirectionException();
 		
 		if (newX > bounds.getX() || newY > bounds.getY())
 			throw new OutOfBoardBoundsException();
@@ -48,8 +48,8 @@ public class SnakeMoveListenerImpl implements SnakeMoveListener {
 		while (it.hasNext()) {
 			SnakeCell cur = it.next();
 			
-			if (!snakeObj.canMove(direction))
-				throw new MoveBackException();
+			if (!snakeObj.isValidDirection(direction))
+				throw new InvalidMoveDirectionException();
 			
 			prev = cur.MoveTo(prev);
 		}

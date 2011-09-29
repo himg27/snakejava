@@ -1,13 +1,13 @@
 package snake.model.exceptions;
 
-public class MoveBackException extends Exception {
+public class InvalidMoveDirectionException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public MoveBackException() {
+	public InvalidMoveDirectionException() {
 		super("Can't move back");
 	}
 }
