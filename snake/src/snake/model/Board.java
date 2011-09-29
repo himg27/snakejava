@@ -10,7 +10,7 @@ public class Board {
 		cols = c;
 		rows = r;
 		snakeObj = new Snake(INIT_SNAKE_SIZE);
-		snakeObj.addSnakeMoveListener(new SnakeMoveListenerImpl(snakeObj));
+		snakeObj.setSnakeMoveListener(new SnakeMoveListenerImpl(snakeObj, new BoardPosition(rows, cols)));
 	}
 	
 	public int getColumns() {

@@ -1,5 +1,6 @@
 package snake.test;
 
+import snake.model.BoardPosition;
 import snake.model.Snake;
 import snake.model.SnakeCell;
 import snake.model.SnakeMoveListenerImpl;
@@ -8,9 +9,9 @@ import snake.model.collections.SnakeIterator;
 class SnakeFactory {
 	public static int DEFAULT_COORD_VALUE = 5;
 	
-	public static Snake CreateSnake(int size, boolean isHorisontal) {
+	public static Snake CreateSnake(int size, boolean isHorisontal, BoardPosition bounds) {
 		Snake snake = new Snake(size);
-		snake.addSnakeMoveListener(new SnakeMoveListenerImpl(snake));
+		snake.setSnakeMoveListener(new SnakeMoveListenerImpl(snake, bounds));
 		
 		int x = DEFAULT_COORD_VALUE;
 		int y = DEFAULT_COORD_VALUE;
