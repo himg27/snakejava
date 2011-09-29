@@ -3,9 +3,9 @@ package snake.test;
 
 import org.junit.Test;
 
-import snake.model.DynamicCellArray;
 import snake.model.SnakeCell;
-import snake.model.SnakeCellIterator;
+import snake.model.collections.DynamicCellArray;
+import snake.model.collections.SnakeIterator;
 
 import junit.framework.TestCase;
 
@@ -20,7 +20,7 @@ public class CellArrayTest extends TestCase {
 
 	@Test
 	public void testIterator() {
-		SnakeCellIterator it = arr.iterator();
+		SnakeIterator it = arr.iterator();
 		
 		int i=0;
 		while (it.hasNext()) {
