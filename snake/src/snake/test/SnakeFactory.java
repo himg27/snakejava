@@ -1,9 +1,9 @@
 package snake.test;
 
-import snake.core.SnakeMoveListenerImpl;
 import snake.model.Snake;
 import snake.model.SnakeCell;
 import snake.model.SnakeCellIterator;
+import snake.model.SnakeMoveListenerImpl;
 
 class SnakeFactory {
 	public static int DEFAULT_COORD_VALUE = 5;

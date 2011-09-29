@@ -12,10 +12,9 @@ public class Snake {
 		cells = new DynamicCellArray(initialSize);
 	}
 	
-//TODO	
-//	public void nom() {
-//		++size;
-//	}
+	public void nomNom() {
+		cells.add();
+	}
 	
 	public void move(SnakeDirection direction) throws EatItselfException, MoveBackException {
 		if (moveListener != null)

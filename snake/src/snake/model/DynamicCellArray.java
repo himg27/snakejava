@@ -15,8 +15,11 @@ public class DynamicCellArray {
 		return new SnakeCellIteratorImpl(cells);
 	}
 	
-	public void addEmpty() {
+	public void add() {
 		cells = Arrays.copyOf(cells, cells.length+1);
+		SnakeCell newCell = new SnakeCell();
+		cells[cells.length-1] = newCell;
+		newCell.MoveTo(cells[cells.length-2].getX(), cells[cells.length-2].getY());
 	}
 	
 	public int getSize() {

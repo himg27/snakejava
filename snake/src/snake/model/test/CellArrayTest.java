@@ -34,7 +34,7 @@ public class CellArrayTest extends TestCase {
 
 	@Test
 	public void testAddEmpty() {
-		arr.addEmpty();
+		arr.add();
 		assertEquals(arr.getSize(), ARR_SIZE+1);
 		
 	}
