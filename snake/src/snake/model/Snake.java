@@ -3,7 +3,7 @@ package snake.model;
 import snake.model.collections.DynamicCellArray;
 import snake.model.collections.SnakeIterator;
 import snake.model.exceptions.EatItselfException;
-import snake.model.exceptions.MoveBackException;
+import snake.model.exceptions.InvalidMoveDirectionException;
 import snake.model.exceptions.OutOfBoardBoundsException;
 
 public class Snake {
@@ -19,7 +19,7 @@ public class Snake {
 		cells.add();
 	}
 	
-	public void move(SnakeDirection direction) throws EatItselfException, MoveBackException, OutOfBoardBoundsException {
+	public void move(SnakeDirection direction) throws EatItselfException, InvalidMoveDirectionException, OutOfBoardBoundsException {
 		if (moveListener != null)
 			moveListener.move(direction);
 	}
@@ -36,7 +36,7 @@ public class Snake {
 		return cells.getSize();
 	}
 	
-	public boolean canMove(SnakeDirection direction) {
+	public boolean isValidDirection(SnakeDirection direction) {
 		return cells.canMove(direction);
 	}
 }

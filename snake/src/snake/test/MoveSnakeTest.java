@@ -9,7 +9,7 @@ import snake.model.SnakeCell;
 import snake.model.SnakeDirection;
 import snake.model.collections.SnakeIterator;
 import snake.model.exceptions.EatItselfException;
-import snake.model.exceptions.MoveBackException;
+import snake.model.exceptions.InvalidMoveDirectionException;
 import snake.model.exceptions.OutOfBoardBoundsException;
 
 import junit.framework.TestCase;
@@ -34,7 +34,7 @@ public class MoveSnakeTest extends TestCase {
 		} catch (EatItselfException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
-		} catch (MoveBackException e) {
+		} catch (InvalidMoveDirectionException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		} catch (OutOfBoardBoundsException e) {
@@ -64,7 +64,7 @@ public class MoveSnakeTest extends TestCase {
 		} catch (EatItselfException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
-		} catch (MoveBackException e) {
+		} catch (InvalidMoveDirectionException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		} catch (OutOfBoardBoundsException e) {
@@ -89,13 +89,13 @@ public class MoveSnakeTest extends TestCase {
 	
 	@Test
 	public void testMoveLeft() {
-		MoveBackException eMoveBack = null;
+		InvalidMoveDirectionException eMoveBack = null;
 		try {
 			snake.move(SnakeDirection.LEFT);
 		} catch (EatItselfException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
-		} catch (MoveBackException e) {
+		} catch (InvalidMoveDirectionException e) {
 			eMoveBack = e;
 		} catch (OutOfBoardBoundsException e) {
 			e.printStackTrace();
@@ -112,7 +112,7 @@ public class MoveSnakeTest extends TestCase {
 		} catch (EatItselfException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
-		} catch (MoveBackException e) {
+		} catch (InvalidMoveDirectionException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		} catch (OutOfBoardBoundsException e) {
@@ -149,7 +149,7 @@ public class MoveSnakeTest extends TestCase {
 		} catch (EatItselfException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
-		} catch (MoveBackException e) {
+		} catch (InvalidMoveDirectionException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		} catch (OutOfBoardBoundsException e) {
@@ -173,7 +173,7 @@ public class MoveSnakeTest extends TestCase {
 		} catch (EatItselfException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
-		} catch (MoveBackException e) {
+		} catch (InvalidMoveDirectionException e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
 		} catch (OutOfBoardBoundsException e) {
