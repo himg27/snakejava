@@ -1,5 +1,7 @@
 package snake.model;
 
+import snake.model.collections.DynamicCellArray;
+import snake.model.collections.SnakeIterator;
 import snake.model.exceptions.EatItselfException;
 import snake.model.exceptions.MoveBackException;
 
@@ -25,7 +27,7 @@ public class Snake {
 		moveListener = l;
 	}
 	
-	public SnakeCellIterator iterator() {
+	public SnakeIterator iterator() {
 		return cells.iterator();
 	}
 	

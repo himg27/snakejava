@@ -2,8 +2,8 @@ package snake.test;
 
 import snake.model.Snake;
 import snake.model.SnakeCell;
-import snake.model.SnakeCellIterator;
 import snake.model.SnakeMoveListenerImpl;
+import snake.model.collections.SnakeIterator;
 
 class SnakeFactory {
 	public static int DEFAULT_COORD_VALUE = 5;
@@ -21,7 +21,7 @@ class SnakeFactory {
 			y = snake.getLength();
 		}
 		
-		SnakeCellIterator it = snake.iterator();
+		SnakeIterator it = snake.iterator();
 		while (it.hasNext()) {
 			SnakeCell cell = it.next(); 
 			cell.MoveTo(x, y);

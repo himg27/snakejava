@@ -1,5 +1,6 @@
 package snake.model;
 
+import snake.model.collections.SnakeIterator;
 import snake.model.exceptions.MoveBackException;
 
 
@@ -12,7 +13,7 @@ public class SnakeMoveListenerImpl implements SnakeMoveListener {
 
 	@Override
 	public void move(SnakeDirection direction) throws MoveBackException {
-		SnakeCellIterator it = snakeObj.iterator();
+		SnakeIterator it = snakeObj.iterator();
 		SnakeCell head = it.next();
 		int oldX = head.getX();
 		int oldY = head.getY();

@@ -6,8 +6,8 @@ import org.junit.Test;
 import snake.model.BoardPosition;
 import snake.model.Snake;
 import snake.model.SnakeCell;
-import snake.model.SnakeCellIterator;
 import snake.model.SnakeDirection;
+import snake.model.collections.SnakeIterator;
 import snake.model.exceptions.EatItselfException;
 import snake.model.exceptions.MoveBackException;
 
@@ -36,7 +36,7 @@ public class MoveSnakeTest extends TestCase {
 			fail(e.getLocalizedMessage());
 		}
 		
-		SnakeCellIterator it = snake.iterator();
+		SnakeIterator it = snake.iterator();
 		SnakeCell head = it.next();
 		
 		assertEquals(head.getX(), oldHeadPos.getX());
@@ -63,7 +63,7 @@ public class MoveSnakeTest extends TestCase {
 			fail(e.getLocalizedMessage());
 		}
 		
-		SnakeCellIterator it = snake.iterator();
+		SnakeIterator it = snake.iterator();
 		SnakeCell head = it.next();
 		
 		assertEquals(head.getX(), oldHeadPos.getX());
@@ -105,7 +105,7 @@ public class MoveSnakeTest extends TestCase {
 			fail(e.getLocalizedMessage());
 		}
 		
-		SnakeCellIterator it = snake.iterator();
+		SnakeIterator it = snake.iterator();
 		SnakeCell head = it.next();
 		
 		assertEquals(head.getX(), oldHeadPos.getX()+1);
@@ -125,7 +125,7 @@ public class MoveSnakeTest extends TestCase {
 		snake = SnakeFactory.CreateSnake(SNAKE_LENGTH, true);
 		
 		int i = snake.getLength();
-		SnakeCellIterator it = snake.iterator();
+		SnakeIterator it = snake.iterator();
 		while (it.hasNext()) {
 			SnakeCell cell = it.next(); 
 			if (i == snake.getLength()) {

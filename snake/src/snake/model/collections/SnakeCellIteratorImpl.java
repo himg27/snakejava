@@ -1,6 +1,8 @@
-package snake.model;
+package snake.model.collections;
 
-class SnakeCellIteratorImpl implements SnakeCellIterator {
+import snake.model.SnakeCell;
+
+class SnakeCellIteratorImpl implements SnakeIterator {
 	private int i = 0;
 	private int length;
 	private SnakeCell[] cellsRef;
