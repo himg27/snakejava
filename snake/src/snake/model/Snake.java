@@ -1,5 +1,8 @@
 package snake.model;
 
+import snake.model.exceptions.EatItselfException;
+import snake.model.exceptions.MoveBackException;
+
 public class Snake {
 	private DynamicCellArray cells;
 	
@@ -14,7 +17,7 @@ public class Snake {
 //		++size;
 //	}
 	
-	public void move(SnakeDirection direction) {
+	public void move(SnakeDirection direction) throws EatItselfException, MoveBackException {
 		if (moveListener != null)
 			moveListener.move(direction);
 	}
@@ -25,5 +28,13 @@ public class Snake {
 	
 	public SnakeCellIterator iterator() {
 		return cells.iterator();
+	}
+	
+	public int getLength() {
+		return cells.getSize();
+	}
+	
+	public boolean canMove(SnakeDirection direction) {
+		return cells.canMove(direction);
 	}
 }

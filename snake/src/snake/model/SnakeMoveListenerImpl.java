@@ -1,13 +1,9 @@
-package snake.core;
+package snake.model;
 
-import snake.model.BoardPosition;
-import snake.model.Snake;
-import snake.model.SnakeCell;
-import snake.model.SnakeCellIterator;
-import snake.model.SnakeDirection;
-import snake.model.SnakeMoveListener;
+import snake.model.exceptions.MoveBackException;
 
-class SnakeMoveListenerImpl implements SnakeMoveListener {
+
+public class SnakeMoveListenerImpl implements SnakeMoveListener {
 	private Snake snakeObj;
 	
 	public SnakeMoveListenerImpl(Snake snake) {
@@ -15,7 +11,7 @@ class SnakeMoveListenerImpl implements SnakeMoveListener {
 	}
 
 	@Override
-	public void move(SnakeDirection direction) {
+	public void move(SnakeDirection direction) throws MoveBackException {
 		SnakeCellIterator it = snakeObj.iterator();
 		SnakeCell head = it.next();
 		int oldX = head.getX();
@@ -37,11 +33,17 @@ class SnakeMoveListenerImpl implements SnakeMoveListener {
 			++newX;
 			break;
 		}
+			
+		if (!snakeObj.canMove(direction))
+			throw new MoveBackException();
 		
-
 		BoardPosition prev = head.MoveTo(newX, newY);
 		while (it.hasNext()) {
 			SnakeCell cur = it.next();
+			
+			if (!snakeObj.canMove(direction))
+				throw new MoveBackException();
+			
 			prev = cur.MoveTo(prev);
 		}
 	}

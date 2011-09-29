@@ -23,4 +23,27 @@ public class DynamicCellArray {
 		return cells.length;
 	}
 	
+	public boolean canMove(SnakeDirection direction) {
+		SnakeCell head = cells[0];
+		SnakeCell secondCell = cells[1];
+		boolean res = false;
+		
+		switch(direction) {
+		case DOWN:
+			res = head.getY() - 1 != secondCell.getY();
+			break;
+		case UP:
+			res = head.getY() + 1 != secondCell.getY();
+			break;
+		case LEFT:
+			res = head.getX() - 1 != secondCell.getX();
+			break;
+		case RIGHT:
+			res = head.getX() + 1 != secondCell.getX();
+			break;
+		}
+		
+		return res;
+	}
+	
 }
