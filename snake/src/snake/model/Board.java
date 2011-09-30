@@ -9,8 +9,6 @@ public class Board {
 	public Board(int c, int r) {
 		cols = c;
 		rows = r;
-		snakeObj = new Snake(INIT_SNAKE_SIZE);
-		snakeObj.setSnakeMoveListener(new SnakeMoveListenerImpl(snakeObj, new BoardPosition(rows, cols)));
 	}
 	
 	public int getColumns() {
@@ -23,5 +21,10 @@ public class Board {
 	
 	public Snake getSnake() {
 		return snakeObj;
+	}
+	
+	public void reset() {
+		snakeObj = SnakeFactory.CreateSnake(INIT_SNAKE_SIZE, true, new BoardPosition(rows, cols));
+		snakeObj.setSnakeMoveListener(new SnakeMoveListenerImpl(snakeObj, new BoardPosition(rows, cols)));
 	}
 }

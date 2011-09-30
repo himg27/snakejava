@@ -12,6 +12,9 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import snake.model.Board;
+import snake.model.SnakeCell;
+import snake.model.SnakeWasMovedListener;
+import snake.model.collections.SnakeIterator;
 
 public class MainWindow extends JFrame {
 	/**
@@ -22,9 +25,11 @@ public class MainWindow extends JFrame {
 	private final static int SIZE_COEF = 50;
 	
 	private Board board;
+	private JButton[][] buttons;
 	
 	public MainWindow(Board board) {
 		this.board = board;
+		buttons = new JButton[board.getRows()][board.getColumns()];
 		
 		setTitle("Snake");
 	    setSize(board.getColumns()*SIZE_COEF, board.getRows()*SIZE_COEF);
@@ -35,16 +40,14 @@ public class MainWindow extends JFrame {
 	}
 	
 	private void initControls() {
-		setLayout(new GridLayout(board.getColumns(), board.getRows()));
+		setLayout(new GridLayout(board.getRows(), board.getColumns()));
 		for (int r = 0; r < board.getRows(); ++r) {
 			for (int c = 0; c < board.getColumns(); ++c) {
-				JButton b = new JButton();
-				b.setEnabled(false);
-				add(b);
+				buttons[r][c] = new JButton();
+				buttons[r][c].setEnabled(false);
+				add(buttons[r][c]);
 			}
 		}
-		
-		addKeyListener(new KeyboardListener(board.getSnake()));
 		
         JMenuBar menuBar = new JMenuBar();
         
@@ -78,6 +81,29 @@ public class MainWindow extends JFrame {
 	}
 	
 	private void newGame() {
-		// TODO: init the snake
+		board.reset();
+		addKeyListener(new KeyboardListener(board.getSnake()));
+        board.getSnake().setSnakeAfterMoveListeners(new SnakeWasMovedListener() {
+			@Override
+			public void onSnakeMoved() {
+				redrawSnake();
+			}
+		});
+        
+		redrawSnake();
+	}
+	
+	private void redrawSnake() {
+		for (int r = 0; r < board.getRows(); ++r) {
+			for (int c = 0; c < board.getColumns(); ++c) {
+				buttons[r][c].setText("");
+			}
+		}
+		
+		SnakeIterator it = board.getSnake().iterator();
+		while (it.hasNext()) {
+			SnakeCell cell = it.next();
+			buttons[cell.getX()][cell.getY()].setText("s");
+		}
 	}
 }

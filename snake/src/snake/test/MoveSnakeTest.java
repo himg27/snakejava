@@ -7,6 +7,7 @@ import snake.model.BoardPosition;
 import snake.model.Snake;
 import snake.model.SnakeCell;
 import snake.model.SnakeDirection;
+import snake.model.SnakeFactory;
 import snake.model.collections.SnakeIterator;
 import snake.model.exceptions.EatItselfException;
 import snake.model.exceptions.InvalidMoveDirectionException;

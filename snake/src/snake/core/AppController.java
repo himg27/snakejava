@@ -7,8 +7,8 @@ public class AppController {
 	private MainWindow win;
 	private Board board;
 	
-	public AppController(int w, int h) {	
-		board = new Board(w, h);
+	public AppController(int c, int r) {	
+		board = new Board(c, r);
 		win = new MainWindow(board);
 	}
 	

@@ -1,12 +1,8 @@
-package snake.test;
+package snake.model;
 
-import snake.model.BoardPosition;
-import snake.model.Snake;
-import snake.model.SnakeCell;
-import snake.model.SnakeMoveListenerImpl;
 import snake.model.collections.SnakeIterator;
 
-class SnakeFactory {
+public class SnakeFactory {
 	public static int DEFAULT_COORD_VALUE = 5;
 	
 	public static Snake CreateSnake(int size, boolean isHorisontal, BoardPosition bounds) {
@@ -35,4 +31,5 @@ class SnakeFactory {
 		
 		return snake;
 	}
+	
 }
