@@ -46,7 +46,7 @@ public class SnakeMoveListenerImpl implements SnakeMoveListener {
 		if (!snakeObj.isValidDirection(direction))
 			throw new InvalidMoveDirectionException();
 		
-		if (newX > bounds.getX() || newY > bounds.getY())
+		if (newX > bounds.getX() - 1 || newY > bounds.getY() - 1 || newX < 0 || newY < 0)
 			throw new OutOfBoardBoundsException();
 		
 		BoardPosition prev = head.MoveTo(newX, newY);

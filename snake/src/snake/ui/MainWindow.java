@@ -78,12 +78,11 @@ public class MainWindow extends JFrame {
 				 System.exit(0);				
 			}
 		});
-        
 	}
 	
 	private void newGame() {
 		board.reset();
-		addKeyListener(new KeyboardListener(board.getSnake()));
+		addKeyListener(new KeyboardListener(board.getSnake(), this));
         board.getSnake().setSnakeAfterMoveListeners(new SnakeWasMovedListener() {
 			@Override
 			public void onSnakeMoved() {
