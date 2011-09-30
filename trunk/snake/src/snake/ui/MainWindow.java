@@ -78,6 +78,7 @@ public class MainWindow extends JFrame {
 				 System.exit(0);				
 			}
 		});
+        
 	}
 	
 	private void newGame() {
@@ -103,7 +104,11 @@ public class MainWindow extends JFrame {
 		SnakeIterator it = board.getSnake().iterator();
 		while (it.hasNext()) {
 			SnakeCell cell = it.next();
-			buttons[cell.getX()][cell.getY()].setText("s");
+			buttons[getInvertY(cell.getY())][cell.getX()].setText("s"); //y = cols
 		}
+	}
+	
+	private int getInvertY(int y) {
+		return board.getRows() - y;
 	}
 }

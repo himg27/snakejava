@@ -3,30 +3,24 @@ package snake.model;
 import snake.model.collections.SnakeIterator;
 
 public class SnakeFactory {
-	public static int DEFAULT_COORD_VALUE = 5;
-	
 	public static Snake CreateSnake(int size, boolean isHorisontal, BoardPosition bounds) {
 		Snake snake = new Snake(size);
 		snake.setSnakeMoveListener(new SnakeMoveListenerImpl(snake, bounds));
 		
-		int x = DEFAULT_COORD_VALUE;
-		int y = DEFAULT_COORD_VALUE;
+		BoardPosition center = new BoardPosition(bounds.getX()/2, bounds.getY()/2);
 		
-		if (isHorisontal) {
-			x = snake.getLength();
-		} else {
-			y = snake.getLength();
-		}
+		int x = center.getX();
+		int y = center.getY();
 		
 		SnakeIterator it = snake.iterator();
 		while (it.hasNext()) {
-			SnakeCell cell = it.next(); 
+			SnakeCell cell = it.next();
 			cell.MoveTo(x, y);
 			if (isHorisontal) {
 				--x;
 			} else {
 				--y;
-			}			
+			}		
 		}
 		
 		return snake;
