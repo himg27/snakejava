@@ -10,6 +10,7 @@ public class Snake {
 	private DynamicCellArray cells;
 	
 	private SnakeMoveListener moveListener = null;
+	private SnakeWasMovedListener snakeMovedListener = null;
 	
 	public Snake(int initialSize) {
 		cells = new DynamicCellArray(initialSize);
@@ -20,12 +21,20 @@ public class Snake {
 	}
 	
 	public void move(SnakeDirection direction) throws EatItselfException, InvalidMoveDirectionException, OutOfBoardBoundsException {
-		if (moveListener != null)
-			moveListener.move(direction);
+		if (moveListener != null) {
+			moveListener.onMove(direction);
+			if (snakeMovedListener != null) {
+				snakeMovedListener.onSnakeMoved();
+			}
+		}
 	}
 	
 	public void setSnakeMoveListener(SnakeMoveListener l) {
 		moveListener = l;
+	}
+	
+	public void setSnakeAfterMoveListeners(SnakeWasMovedListener l) {
+		snakeMovedListener = l;
 	}
 	
 	public SnakeIterator iterator() {

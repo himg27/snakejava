@@ -15,7 +15,7 @@ public class SnakeMoveListenerImpl implements SnakeMoveListener {
 	}
 
 	@Override
-	public void move(SnakeDirection direction) throws InvalidMoveDirectionException, OutOfBoardBoundsException {
+	public void onMove(SnakeDirection direction) throws InvalidMoveDirectionException, OutOfBoardBoundsException {
 		SnakeIterator it = snakeObj.iterator();
 		SnakeCell head = it.next();
 		int oldX = head.getX();
