@@ -1,7 +1,10 @@
 package snake.ui;
 
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.JOptionPane;
 
 import snake.core.exceptions.EatItselfException;
 import snake.core.exceptions.InvalidMoveDirectionException;
@@ -11,8 +14,9 @@ import snake.model.SnakeDirection;
 
 class KeyboardListener implements KeyListener {
 	private Snake snakeObj;
+	private Component parent;
 	
-	public KeyboardListener(Snake snake) {
+	public KeyboardListener(Snake snake, Component comp) {
 		snakeObj = snake;
 	}
 
@@ -34,11 +38,11 @@ class KeyboardListener implements KeyListener {
 				break;
 			}
 		} catch (EatItselfException eat) {
-			// TODO
+			JOptionPane.showMessageDialog(parent, "SUICIDE");
 		} catch (InvalidMoveDirectionException e) {
 			// TODO		
 		} catch (OutOfBoardBoundsException e) {
-			// TODO			
+			JOptionPane.showMessageDialog(parent, "Game over");
 		}
 	}
 
