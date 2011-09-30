@@ -1,5 +1,6 @@
 package snake.model;
 
+import snake.core.SnakeMoveListenerImpl;
 import snake.model.collections.SnakeIterator;
 
 public class SnakeFactory {

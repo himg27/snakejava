@@ -1,5 +1,7 @@
 package snake.model;
 
+import snake.core.SnakeMoveListenerImpl;
+
 public class Board {
 	private int cols;
 	private int rows;
