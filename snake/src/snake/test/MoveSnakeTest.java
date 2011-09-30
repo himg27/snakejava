@@ -3,15 +3,15 @@ package snake.test;
 
 import org.junit.Test;
 
+import snake.core.exceptions.EatItselfException;
+import snake.core.exceptions.InvalidMoveDirectionException;
+import snake.core.exceptions.OutOfBoardBoundsException;
 import snake.model.BoardPosition;
 import snake.model.Snake;
 import snake.model.SnakeCell;
 import snake.model.SnakeDirection;
 import snake.model.SnakeFactory;
 import snake.model.collections.SnakeIterator;
-import snake.model.exceptions.EatItselfException;
-import snake.model.exceptions.InvalidMoveDirectionException;
-import snake.model.exceptions.OutOfBoardBoundsException;
 
 import junit.framework.TestCase;
 

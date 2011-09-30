@@ -3,11 +3,11 @@ package snake.ui;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import snake.core.exceptions.EatItselfException;
+import snake.core.exceptions.InvalidMoveDirectionException;
+import snake.core.exceptions.OutOfBoardBoundsException;
 import snake.model.Snake;
 import snake.model.SnakeDirection;
-import snake.model.exceptions.EatItselfException;
-import snake.model.exceptions.InvalidMoveDirectionException;
-import snake.model.exceptions.OutOfBoardBoundsException;
 
 class KeyboardListener implements KeyListener {
 	private Snake snakeObj;
